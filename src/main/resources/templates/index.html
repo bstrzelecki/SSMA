@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data" action="/send/image">
+        <input name="image" type="file">
+        <label title="Title">
+            <input name="title" type="text">
+        </label>
+        <label title="Description">
+            <input name="desc" type="text">
+        </label>
+        <input type="submit">
+    </form>
+
+
+    <div th:each="img:${images}">
+        <h1 th:text="${img.title}"></h1>
+        <h2 th:text="${img.author}"></h2>
+        <p th:text="${img.desc}"></p>
+        <img th:src="${'get/image?id=' + img.id}">
+    </div>
+</body>
+</html>

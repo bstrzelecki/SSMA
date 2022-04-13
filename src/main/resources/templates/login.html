@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $.get("/user/status", function(data) {
+            $("#user").html(data.name);
+            $(".unauthenticated").hide()
+            $(".authenticated").show()
+        });
+    </script>
+</head>
+<body>
+    <form>
+        <label for="login">Login:</label>
+        <input id="login" type="text">
+        <label for="password">Password:</label>
+        <input id="password" type="password">
+
+        <input type="submit">
+    </form>
+    <div class="container unauthenticated">
+        With GitHub: <a href="/oauth2/authorization/github">click here</a>
+    </div>
+    <div class="container authenticated" style="display:none">
+        Logged in as: <span id="user"></span>
+    </div>
+</body>
+</html>
